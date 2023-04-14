@@ -10,18 +10,19 @@ SSL connection.
 
 ## Usage
 
-1. Clone this repo on the server
+1. Clone this repo on the server and `cd` into it
 
-2. If needed, set your server name in `.env` (`SERVER_NAME`)
+1. If needed, set your server name in `.env` (`SERVER_NAME`)
 
-3. Create your credentials for docker login:
+1. Create your credentials for docker login:
    
    ```
+   chmod +x authgen.sh
    ./authgen.sh [username] [password]
    ```
 
-4. Launch dockerized nginx and registry:
+1. Launch dockerized nginx and registry:
 
    ```
-   docker compose up
+   docker compose up -d
    ```

@@ -1,1 +1,2 @@
 data/registry/auth/*
+!data/registry/auth/.gitkeep
