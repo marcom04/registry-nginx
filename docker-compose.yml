@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+
+  nginx:
+    container_name: rn-nginx
+    image: nginx:stable-alpine
+    ports:
+      - "80:80"
+    volumes:
+      - ./data/nginx:/etc/nginx/conf.d
+
+  registry:
+    container_name: rn-registry
+    image: registry:2
+    volumes:
+      - ./data/registry/auth:/auth
+    environment:
+      - REGISTRY_AUTH=htpasswd
+      - REGISTRY_AUTH_HTPASSWD_REALM=Registry Realm
+      - REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd
+    restart: always
+    depends_on:
+      - nginx
